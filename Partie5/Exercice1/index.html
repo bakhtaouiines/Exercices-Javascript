@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 1</h1>
+    <p>Créer un formulaire demandant un mot de passe et une confirmation de mot de passe et comportant un bouton. Au clic sur le bouton, si les deux champs sont identiques, les entourer de vert. Sinon les entourer en rouge.</p>
+    <p>
+        <label>Mot de passe :</label>
+        <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" required>
+        <input type="password" id="verifmdp" name="verifmdp" placeholder="Veuillez confirmer" required>
+        <button type="button" onclick="verif(mdp, verifmdp)">Valider</button>
+    </p>
+
+    <script>
+        function verif(a, b) {
+            if (a.value != b.value) {
+                color = "border-color: red"
+            } else {
+                color = "border-color: green"
+            }
+            a.style.cssText = color
+            b.style.cssText = color
+        }
+    </script>
+</body>
+
+</html>

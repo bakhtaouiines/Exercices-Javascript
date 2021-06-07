@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 2</h1>
+    <p style="font-style: italic;">Fonctionnalités :<br> 1. Enregistrer un lien Prezi<br> 2. Lister tous les exposés (titres et liens)<br> 3. Supprimer un lien depuis la liste<br></p>
+    <div id="myLink" style="margin-bottom: 1%;">
+        <input id="title" name="title" type="text" placeholder="Votre titre">
+        <input id="link" name="link" type="text" placeholder="Votre lien">
+    </div>
+    <button type="button" value="Enregistrer" onclick="register()">Enregistrer</button>
+    <button type="button" value="Lister" id="list" onclick="listing()">Lister</button>
+    <button type="button" value="Effacer" id="remove" onclick="remove()">Effacer</button>
+    <p id="result"></p>
+
+    <script>
+        //Sauvegarder
+        function register() {
+            let title = document.getElementById("title").value
+            let link = document.getElementById("link").value
+            if (typeof(Storage) != "undefined") {
+                localStorage.setItem(title, link)
+                console.log("c'est bon")
+            } else {
+                console.log("ça marche pas")
+            }
+        }
+        //Lister
+        function listing() {
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i)
+                let value = localStorage.getItem(key)
+                document.getElementById("result").innerHTML += (`${key} ${value} <br>`)
+            }
+        }
+        //Effacer
+        function remove() {
+            let title = document.getElementById("title").value
+            localStorage.removeItem(title)
+            document.location.reload()
+        }
+    </script>
+
+</body>
+
+</html>

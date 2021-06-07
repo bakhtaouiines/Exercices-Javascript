@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 6</h1>
+    <p>Dans un formulaire, faire que les champs aient une bordure noire quand ils ont le focus. La supprimer quand ils perdent le focus.</p>
+
+    <input type="text" name="name" placeholder="Votre nom" id="focusItem">
+    <input type="email" name="mail" placeholder="Votre mail" id="focusItem2">
+
+    <script>
+        let x = document.getElementById("focusItem")
+        let y = document.getElementById("focusItem2")
+
+        x.addEventListener("focus", getFocus1, true)
+        x.addEventListener("blur", getBlur1, true)
+        y.addEventListener("focus", getFocus2, true)
+        y.addEventListener("blur", getBlur2, true)
+
+        function getFocus1() {
+            x.style.borderColor = "black"
+        }
+
+        function getFocus2() {
+            y.style.borderColor = "black"
+        }
+
+        function getBlur1() {
+            x.style.borderColor = ""
+        }
+
+        function getBlur2() {
+            y.style.borderColor = ""
+        }
+    </script>
+</body>
+
+</html>

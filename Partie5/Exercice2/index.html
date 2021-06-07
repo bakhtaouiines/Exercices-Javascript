@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/style.css" rel="stylesheet">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 2</h1>
+    <p>Refaire le premier exercice mais en utilisant des classes préparées en css.</p>
+    <p>
+        <label>Mot de passe :</label><br>
+        <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" class="style" required><br>
+        <input type="password" id="verifmdp" name="verifmdp" placeholder="Veuillez confirmer" class="class" required><br>
+        <button type="button" onclick="verif()">Valider</button>
+    </p>
+
+    <script>
+        function verif() {
+
+            if (mdp.className != verifmdp.className) {
+                mdp.className = "style2"
+                verifmdp.className = "style2"
+            } else {
+                mdp.className = "style1"
+                verifmdp.className = "style1"
+            }
+        }
+    </script>
+</body>
+
+</html>

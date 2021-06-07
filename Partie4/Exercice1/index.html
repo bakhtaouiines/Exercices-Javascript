@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 1</h1>
+    <p>Écrire une fonction qui prend 2 nombres en paramètres et qui retourne le résultat de leur multiplication. Créer un formulaire permettant d'entrer deux nombres. Au clic sur un bouton, lancer votre fonction.</p>
+    <label for="x">Premier nombre</label>
+    <input type=number id="x" value="89">
+    <label for="y">Deuxième nombre</label>
+    <input type=number id="y">
+    <button onclick="multiplyTwoValues(x.value,y.value)">Résultat</button>
+    <p id="result"></p>
+    <script>
+        function multiplyTwoValues(x, y) {
+            result.innerText = x * y
+        }
+    </script>
+</body>
+
+</html>
+
+<!--onclick est un "évènement"-->
+
+
+
+<!-----------------------TEST 1-------------------------
+    <form name="myForm" id="myForm" onsubmit="multiplierDeuxValeurs(firstNumber, secondNumber)">
+        <label for="firstnumber">Entrez un premier nombre :</label>
+        <input type="number" name="firstnumber" id="firstnumber" required><br>
+        <label for="secondnumber">Entrez un deuxième nombre :</label>
+        <input type="number" name="secondnumber" id="secondnumber" required><br>
+        <button onclick="multiplierDeuxValeurs(firstnumber.value, secondnumber.value)">Cliquez ici</button>
+        <script src="scripts/main.js"></script>
+    </form>
+---------------------------------------------------------->

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Exercices Javascript</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <h1>Exercice 4</h1>
+    <p>Dans le fichier html fourni, au clic sur l'image, augmenter sa taille. Utiliser une fonction fléchée.</p>
+    <img src="assets/img/la-nuit-etoilee.jpg" alt="La nuit étoilée - V. VAN GOGH" id="image" onclick="changeSize(image , 100)" ondblclick="changeSize(image, 50)" />
+    <script>
+        /*const enlarge = (image) => image.style.width = "100%"
+                const decrease = (image) => image.style.width = "50%"*/
+        const changeSize = (image, width) => image.style.width = width + "%"
+    </script>
+</body>
+
+</html>

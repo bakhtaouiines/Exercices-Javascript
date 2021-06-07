@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 3</h1>
+    <p>Créer un formulaire contenant un champ nom, un champ mail et un champ âge. Si les champs ne correspondent pas à une regex, afficher un message d'erreur en rouge sous le champs dès que l'on entre une valeur.</p>
+
+    <input type="text" id="name" name="name" placeholder="Votre nom" oninput="checkName()" required>
+    <p id="formErrorName"></p>
+    <input type="email" id="mail" name="mail" placeholder="Votre mail" oninput="checkMail()" required>
+    <p id="formErrorMail"></p>
+    <input type="number" min="1" id="age" name="age" placeholder="Votre âge" oninput="checkAge()" required>
+    <p id="formErrorAge"></p>
+
+    <script>
+        function checkName() {
+            let nameValue = document.getElementById('name').value
+            let nameRGEX = /^[A-Za-zÉÈËéèëÀÂÄàäâÎÏïîÔÖôöÙÛÜûüùÆŒÇç][A-Za-zÉÈËéèëÀÂÄàäâÎÏïîÔÖôöÙÛÜûüùÆŒÇç\-\s\']*$/
+            let result = nameRGEX.test(nameValue)
+            console.log(result)
+            if (result == false) {
+                formErrorName.innerText = ("Format invalide")
+                formErrorName.style.color = 'red'
+            }
+        }
+
+        function checkMail() {
+            let mail = document.getElementById('mail').value
+            let mailRGEX = /^[A-Za-z0-9]*[\-\.\_\]*@[A-Za-z0-9\-\_]+.[a-zA-Z0-9]{2,3}$/
+            let result = mailRGEX.test(mail)
+            if (result == false) {
+                formErrorMail.innerText = ("Format invalide")
+                formErrorMail.style.color = 'red'
+            }
+        }
+
+        function checkAge() {
+            let age = document.getElementById('age').value
+            let ageRGEX = /^[1-9][0-9]?$|^100$/
+            let result = ageRGEX.test(age)
+            if (result == false) {
+                formErrorAge.innerText = ("Format invalide")
+                formErrorAge.style.color = 'red'
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+<!---
+constraints name : /^[A-Za-zÉÈËéèëÀÂÄàäâÎÏïîÔÖôöÙÛÜûüùÆŒÇç\s]*$/
+constraints mail : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+constraints age : [0-9]
+-->

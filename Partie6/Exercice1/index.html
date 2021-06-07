@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 1</h1>
+    <p>Créer une liste avec trois éléments (Pierre, Feuille, Ciseaux). Ajouter un bouton « Shifumi ! ». Lorsque l'on clique sur « Shifumi ! », choisir un élément au hasard (Pierre, Feuille ou Ciseaux). Le comparer à l'élément choisi par le joueur pour voir
+        qui a gagné entre l'humain et la machine. Bonus : Ajouter un compteur de victoires et de défaites et afficher le pourcentage de victoire contre l'ordinateur.</p>
+
+    <form id="shifumi">
+        <input type="radio" id="pierre" value="pierre" name="choice">
+        <label for="pierre">Pierre</label>
+
+        <input type="radio" id="feuille" value="feuille" name="choice">
+        <label for="feuille">Feuille</label>
+
+        <input type="radio" id="ciseaux" value="ciseaux" name="choice">
+        <label for="ciseaux">Ciseaux</label>
+
+        <input type="hidden" name="playerCounter" value=0>
+        <input type="hidden" name="robotCounter" value=0>
+
+        <button type="button" id="play">Shifumi !</button>
+
+
+    </form>
+    <div class="text">
+        <div id="robotGame"></div>
+        <div id="result"></div>
+        <div id="totalPoints"></div>
+        <div id="percentage"></div>
+    </div>
+
+    <script src="assets/scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() { //ready -> attendre que tout soit chargé avant de lancer le travail
+            let shifumiValues = ["pierre", "feuille", "ciseaux"]
+            let playerCounter = parseInt($("form input[name = 'playerCounter']").val())
+            let robotCounter = parseInt($("form input[name = 'robotCounter']").val())
+
+
+            $('#play').click(function() {
+                let playerValue = $("form input[type = 'radio']:checked").val()
+                let robotValue = shifumiValues[Math.floor(Math.random() * shifumiValues.length)] // Math.floor = arrondi à l'entier le plus bas
+                $("#robotGame").text("Le robot a joué : " + robotValue)
+                if (playerValue == robotValue) {
+                    $("#result").text("-> Égalité!")
+
+                } else if (
+                    (playerValue == "pierre" && robotValue == "ciseaux") ||
+                    (playerValue == "feuille" && robotValue == "pierre") ||
+                    (playerValue == "ciseaux" && robotValue == "feuille")
+                ) {
+                    $("#result").text("-> Vous avez gagné!")
+                    playerCounter++
+                } else {
+                    $("#result").text("-> Vous avez perdu!")
+                    robotCounter++
+                }
+                $("#totalPoints").text("Le robot a " + robotCounter + " points et vous " + playerCounter)
+                let percentage = (playerCounter / (playerCounter + robotCounter) * 100).toFixed(0)
+                $("#percentage").text("Pourcentage de victoires :" + percentage + "%")
+
+
+            })
+        })
+    </script>
+</body>
+
+</html>
+
+
+<!----------------------
+combinaisons : 
+robot === joueur : égalité 
+if -> joueur === "pierre" && robot ==="ciseaux" 
+|| joueur === "feuille" && robot ==="pierre" 
+|| joueur === "ciseaux" && robot === "feuille" : joueur vainqueur 
+else -> joueur perdant
+----------------------->

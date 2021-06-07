@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 4</h1>
+    <p>Créer un fichier html et y ajouter une image. Au clic sur l'image changer sa source, au survol, l'agrandir.</p>
+    <img id="marsplanet" width="60%" height="60%" alt="photo de la planète Mars" src="assets/images/Mars.jpg" onclick="changeImage()" onmouseover="enlargeImage()" onmouseout="normalImage()">
+    <script>
+        function changeImage() {
+            let marsPlanet = document.getElementById('marsplanet')
+            if (marsPlanet.src.match("assets/images/Mars.jpg")) {
+                marsPlanet.src = "assets/images/Mars2.jpg"
+            } else {
+                marsPlanet.src = "assets/images/Mars.jpg"
+            }
+        }
+
+        function enlargeImage() {
+            let marsPlanet = document.getElementById('marsplanet')
+            marsPlanet.style.height = "70%"
+            marsPlanet.style.width = "70%"
+        }
+
+        function normalImage() {
+            let marsPlanet = document.getElementById('marsplanet')
+            marsPlanet.style.height = "60%"
+            marsPlanet.style.width = "60%"
+        }
+    </script>
+</body>
+
+</html>

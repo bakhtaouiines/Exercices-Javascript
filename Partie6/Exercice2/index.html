@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Javascript</title>
+</head>
+
+<body>
+    <h1>Exercice 2</h1>
+    <p>Demander à l'aide d'un formulaire les 5 dernières notes d'un élève.<br> Calculer sa moyenne et déterminer son appréciation.<br> Afficher la moyenne et l'appréciation de l'élève.</p>
+
+    <form>
+        <legend style="font-weight: bolder">Indiquez vos cinq dernières notes:</legend>
+        <input type="number" name="studentGrade" min="0" max="20" placeholder="Note 1">
+        <input type="number" name="studentGrade" min="0" max="20" placeholder="Note 2">
+        <input type="number" name="studentGrade" min="0" max="20" placeholder="Note 3">
+        <input type="number" name="studentGrade" min="0" max="20" placeholder="Note 4">
+        <input type="number" name="studentGrade" min="0" max="20" placeholder="Note 5">
+        <button type="button" id="average">Ma Moyenne</button>
+
+    </form>
+    <span id="appreciation"></span>
+    <script src="assets/scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        let studentGrade = 0
+        let total = 0
+        let counter = 0
+        $("#average").click(function() {
+            $("input[type=number]").each(function() {
+
+                studentGrade = parseFloat($(this).val())
+                if (isNaN(studentGrade)) { // si la valeur est NaN , on affecte 0
+                    studentGrade = 0
+                }
+
+                total += studentGrade // += permet d'ajouter et affecter une valeur à une variable
+                counter++ // incrémentation -> ajoute 1 à la valeur initiale 
+            })
+            let averageGrades = total / counter
+
+            if (averageGrades >= 0 && averageGrades < 10) {
+                $('#appreciation').text("Votre moyenne est de: " + averageGrades + "; c'est en dessous de la moyenne.")
+            } else if (
+                (averageGrades >= 10 && averageGrades < 13)) {
+                $('#appreciation').text("Votre moyenne est de: " + averageGrades + "; c'est moyen.")
+            } else if (
+                (averageGrades >= 13 && averageGrades < 16)) {
+                $('#appreciation').text("Votre moyenne est de: " + averageGrades + "; c'est bien.")
+            } else if (
+                (averageGrades >= 16 && averageGrades < 20)) {
+                $('#appreciation').text("Votre moyenne est de: " + averageGrades + "; c'est très bien.")
+
+            } else {
+                (averageGrades === 20)
+                $('#appreciation').text("Votre moyenne est de: " + averageGrades + "; c'est excellent!")
+            }
+
+        })
+    </script>
+</body>
+
+</html>
+
+<!--
+    en dessous de la moyenne : x= >= 0 && < 10
+    moyen : x= >= 10 && < 13
+    bien : x= >=13 && <16
+    très bien : x= >=16 && <20
+    excellent : x= ===20
+
+-->
